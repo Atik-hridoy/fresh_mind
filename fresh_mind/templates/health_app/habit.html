@@ -1,0 +1,25 @@
+<!-- habit.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+</head>
+<body>
+    <h1>Habit Tracker</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="habit">Enter your habit:</label>
+        <input type="text" id="habit" name="habit" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Your Habit Entries:</h2>
+    <ul>
+        {% for habit in habits %}
+            <li>{{ habit }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

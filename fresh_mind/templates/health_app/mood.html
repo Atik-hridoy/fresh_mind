@@ -1,0 +1,25 @@
+<!-- mood.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker</title>
+</head>
+<body>
+    <h1>Mood Tracker</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="mood">Enter your mood:</label>
+        <input type="text" id="mood" name="mood" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Your Mood Entries:</h2>
+    <ul>
+        {% for mood in moods %}
+            <li>{{ mood }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
