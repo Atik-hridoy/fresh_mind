@@ -1,18 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Daily Quote</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Mind - Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            background-color: #fff0f5;
-            font-family: sans-serif;
-            text-align: center;
-            padding-top: 100px;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8f9fa; }
+        .profile-icon { width: 40px; height: 40px; border-radius: 50%; background: gray; cursor: pointer; }
+        .activity-container { width: 200px; margin: auto; }
+        .buttons-container { display: flex; justify-content: space-around; margin: 20px; }
+        .nav-button { padding: 15px; background: #ff8c00; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; }
+        .stats-container { display: flex; justify-content: space-around; padding: 20px; }
+        .stat-card { padding: 15px; background: #007bff; color: white; border-radius: 10px; width: 40%; }
+        .bottom-nav { display: flex; justify-content: space-around; padding: 10px; background: #ddd; position: fixed; bottom: 0; width: 100%; }
     </style>
 </head>
 <body>
-    <h1>Quote of the Day</h1>
-    <p>{{ quote }}</p>
+    <div class="header">
+        <h2>Fresh Mind</h2>
+        <div class="profile-icon"></div>
+    </div>
+    
+    <div class="activity-container">
+        <canvas id="activityChart"></canvas>
+    </div>
+    
+    <div class="buttons-container">
+        <button class="nav-button" onclick="location.href='/workouts'">Workouts</button>
+        <button class="nav-button" onclick="location.href='/habits'">Habits</button>
+        <button class="nav-button" onclick="location.href='/mood'">Mood</button>
+        <button class="nav-button" onclick="location.href='/quote'">Quotes</button>
+    </div>
+    
+    <div class="stats-container">
+        <div class="stat-card">Mood Entries: 5</div>
+        <div class="stat-card">Habits Tracked: 8</div>
+    </div>
+    
+    <div class="bottom-nav">
+        <span>🏠 Home</span>
+        <span>📊 Stats</span>
+        <span>⚙️ Settings</span>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('activityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Move', 'Exercise', 'Stand'],
+                datasets: [{
+                    data: [80, 50, 30],
+                    backgroundColor: ['red', 'blue', 'orange']
+                }]
+            },
+            options: { responsive: true }
+        });
+    </script>
 </body>
 </html>

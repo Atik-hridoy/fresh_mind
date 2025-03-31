@@ -1,25 +1,60 @@
-<!-- habit.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habit Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #ffecd1;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Habit Tracker</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="habit">Enter your habit:</label>
-        <input type="text" id="habit" name="habit" required>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <h1>Habit Tracker</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="habit">Enter your habit:</label>
+            <input type="text" id="habit" name="habit" required>
+            <button type="submit">Submit</button>
+        </form>
 
-    <h2>Your Habit Entries:</h2>
-    <ul>
-        {% for habit in habits %}
-            <li>{{ habit }}</li>
-        {% endfor %}
-    </ul>
+        <h2>Your Habit Entries:</h2>
+        <ul>
+            {% for habit in habits %}
+                <li>{{ habit }}</li>
+            {% endfor %}
+        </ul>
+        
+        <a href="/">Home</a> | <a href="/mood/">Mood Tracker</a>
+    </div>
 </body>
 </html>

@@ -1,11 +1,6 @@
-# views.py
-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Mood, Habit
 import random
-
-# Dummy storage for simplicity (will be reset on server restart)
-moods = []
-habits = []
 
 def home(request):
     return render(request, 'health_app/home.html')
@@ -22,14 +17,20 @@ def daily_quote(request):
 
 def mood_tracker(request):
     if request.method == 'POST':
-        mood = request.POST.get('mood')
-        if mood:
-            moods.append(mood)  # Add mood to the list
+        mood_text = request.POST.get('mood')
+        if mood_text:
+            Mood.objects.create(mood=mood_text)  # Save to database
+        return redirect('mood_tracker')
+    
+    moods = Mood.objects.all()  # Fetch moods from DB
     return render(request, 'health_app/mood.html', {'moods': moods})
 
 def habit_tracker(request):
     if request.method == 'POST':
-        habit = request.POST.get('habit')
-        if habit:
-            habits.append(habit)  # Add habit to the list
+        habit_text = request.POST.get('habit')
+        if habit_text:
+            Habit.objects.create(habit=habit_text)  # Save to database
+        return redirect('habit_tracker')
+
+    habits = Habit.objects.all()  # Fetch habits from DB
     return render(request, 'health_app/habit.html', {'habits': habits})
