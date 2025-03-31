@@ -1,6 +1,7 @@
 # Fresh Mind
 
-![App Screenshot](Screenshot%202025-04-01%20022127.png)
+![App Screenshot]()![Screenshot 2025-04-01 022127](https://github.com/user-attachments/assets/991af36a-34f7-4b20-b95e-faf8d70f1551)
+
 
 - Move  
 - Exercise  
